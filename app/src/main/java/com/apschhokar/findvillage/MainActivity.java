@@ -37,6 +37,8 @@ public class MainActivity extends Activity {
     private static final String TWITTER_KEY = "6sPufae5izNWaAK47cdQzETs3";
     private static final String TWITTER_SECRET = "k5DTtn2lJ8pzGUepLc96Tnatcrklxia4peavISPcbNfg91Drla";
     private static final String UserTweets = "UserTweet";
+    private static final String WATSON_PASSWORD =  "Me6TGdzFhmDH",
+    private static final String WATSON_USERNAME = "3a16b4c7-f66f-4092-a067-0235e5f7b6ee"
 
     private TwitterLoginButton loginButton;
     public static String username = "";
@@ -107,9 +109,15 @@ public class MainActivity extends Activity {
                             Log.d(TAG, "success: ----> " + tweet.text);
                             tweets.add(tweet.text);
                         }
+                        //Send through Watson
+                        PersonalityInsights service = new PersonalityInsights();
+                        service.setUsernameAndPassword("<username>", "<password>");
 
+                        // Demo content from Moby Dick by Hermann Melville (Chapter 1)
+                        String text = //Input concatenated tweet string OR JSON representation here
 
-
+                        Profile profile = service.getProfile(text).execute(); // User's profile
+                        System.out.println(profile);
 
 
 //                        Intent myIntent = new Intent(MainActivity.this, EnterLocation.class);
