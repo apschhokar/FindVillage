@@ -23,6 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ProfileInsights">
+
+        </activity>
         <activity android:name="com.twitter.sdk.android.core.identity.OAuthActivity" />
 
         <meta-data

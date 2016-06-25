@@ -37,8 +37,8 @@ public class MainActivity extends Activity {
     private static final String TWITTER_KEY = "6sPufae5izNWaAK47cdQzETs3";
     private static final String TWITTER_SECRET = "k5DTtn2lJ8pzGUepLc96Tnatcrklxia4peavISPcbNfg91Drla";
     private static final String UserTweets = "UserTweet";
-    private static final String WATSON_PASSWORD =  "Me6TGdzFhmDH",
-    private static final String WATSON_USERNAME = "3a16b4c7-f66f-4092-a067-0235e5f7b6ee"
+    private static final String WATSON_PASSWORD =  "Me6TGdzFhmDH";
+    private static final String WATSON_USERNAME = "3a16b4c7-f66f-4092-a067-0235e5f7b6ee";
 
     private TwitterLoginButton loginButton;
     public static String username = "";
@@ -83,7 +83,7 @@ public class MainActivity extends Activity {
     protected void onActivityResult(final int requestCode, int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        Log.d(TAG, "onActivityResult: i am called" + requestCode + " " + resultCode +" " + data.toString());
+        Log.d(TAG, "onActivityResult: i am called" + requestCode + " " + resultCode + " " + data.toString());
         // Make sure that the loginButton hears the result from any
         // Activity that it triggered.
         loginButton.onActivityResult(requestCode, resultCode, data);
@@ -103,39 +103,19 @@ public class MainActivity extends Activity {
 
                         //create an arraylist to store all the tweets and then pass it to next activity
                         ArrayList<String> tweets = new ArrayList<>();
+                        StringBuilder concatenate = new StringBuilder();
+
 
                         for (Tweet tweet : listResult.data) {
                             // here you will get list
                             Log.d(TAG, "success: ----> " + tweet.text);
                             tweets.add(tweet.text);
+                            concatenate.append(tweet.text);
+                            concatenate.append(" ");
                         }
-                        //Send through Watson
-                        PersonalityInsights service = new PersonalityInsights();
-                        service.setUsernameAndPassword("<username>", "<password>");
 
-                        // Demo content from Moby Dick by Hermann Melville (Chapter 1)
-                        String text = //Input concatenated tweet string OR JSON representation here
+                        launchProfileInsights(concatenate.toString());
 
-                        Profile profile = service.getProfile(text).execute(); // User's profile
-                        System.out.println(profile);
-
-
-//                        Intent myIntent = new Intent(MainActivity.this, EnterLocation.class);
-//
-//                        String[] tweetsToSend = new String[tweets.size()];
-//                        int count = 0;
-//                        for (String s : tweets){
-//                            tweetsToSend[count] = tweets.get(count);
-//                            count++;
-//                        }
-//
-//
-//                        Bundle b=new Bundle();
-//                        b.putStringArray(UserTweets,tweetsToSend );
-//                        Intent i=new Intent(getApplicationContext(), MainActivity.class);
-//                        i.putExtras(b);
-//
-//                        MainActivity.this.startActivity(i);
 
                     }
 
@@ -156,6 +136,13 @@ public class MainActivity extends Activity {
     }
 
 
+
+    public void launchProfileInsights(String twitterText){
+
+        Intent i = new Intent(this, ProfileInsights.class);
+        i.putExtra("TwitterText", twitterText);
+        startActivity(i);
+    }
 
 
     @Override
