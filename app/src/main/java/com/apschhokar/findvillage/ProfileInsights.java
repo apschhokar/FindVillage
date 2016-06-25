@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-public class EnterLocation extends AppCompatActivity {
+public class ProfileInsights extends AppCompatActivity {
 
     private static final String UserTweets = "UserTweet";
     private static final String TAG = "EnterLocation";
@@ -23,6 +23,8 @@ public class EnterLocation extends AppCompatActivity {
         for (int i =0 ; i< array.length;i++){
             Log.d(TAG, "onCreate: " + array[i]);
         }
+
+
 
 
     }
