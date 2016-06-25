@@ -15,6 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.twitter.sdk.android.core.identity.OAuthActivity">
+        </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="d3b1ee597f6744f2666bb9094e6e64cdace1a4f6" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
