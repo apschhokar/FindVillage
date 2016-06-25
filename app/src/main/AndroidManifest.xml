@@ -2,6 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.apschhokar.findvillage">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <dependency>
+        <groupId>
+            com.ibm.watson.developer_cloud
+        </groupId>
+
+        <artifactId>
+            java-sdk
+        </artifactId>
+
+        <version>
+            3.0.1
+        </version>
+    </dependency>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,12 +31,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.twitter.sdk.android.core.identity.OAuthActivity">
-        </activity>
+        <activity android:name="com.twitter.sdk.android.core.identity.OAuthActivity" />
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="d3b1ee597f6744f2666bb9094e6e64cdace1a4f6" />
+
+        <activity android:name=".EnterLocation" />
+        <activity android:name=".MapActivity"></activity>
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
